@@ -101,7 +101,6 @@ router.post('/user-create', function (req, res) {
 
 router.get('/user-delete', function (req, res) {
   const { id } = req.query
-  console.log(id)
 
   User.deleteById(Number(id))
 
@@ -126,6 +125,195 @@ router.post('/user-update', function (req, res) {
   res.render('success-info', {
     style: 'success-info',
     info: result ? 'Email оновлений' : 'сталася помилка',
+  })
+})
+
+// ================================================================
+class Product {
+  static #list = []
+
+  constructor(name, price, description) {
+    this.name = name
+    this.description = description
+    this.price = price
+    this.id = Math.trunc(Math.random() * 100000)
+    this.createDate = new Date().toISOString()
+  }
+
+  static getList() {
+    return this.#list
+  }
+
+  static add(product) {
+    if (product) {
+      this.#list.push(product)
+      return true
+    }
+    return false
+  }
+
+  static getById(id) {
+    return this.#list.find((product) => product.id === id)
+  }
+
+  static updateById(id, data) {
+    const product = this.getById(id)
+
+    if (product) {
+      if (data.name) {
+        product.name = data.name
+      }
+      if (data.price) {
+        product.price = data.price
+      }
+      if (data.description) {
+        product.description = data.description
+      }
+
+      return true
+    }
+    return false
+  }
+
+  static deleteById = (id) => {
+    const index = this.#list.findIndex(
+      (product) => product.id === id,
+    )
+    if (index !== -1) {
+      this.#list.splice(index, 1)
+      return true
+    } else {
+      return false
+    }
+  }
+
+  // static deleteById(id) {
+  //   const index = this.#list.findIndex((product) =>
+  //     console.log(typeof product.id, typeof id),
+  //   )
+  //   if (index !== -1) {
+  //     this.#list.splice(index, 1)
+  //     return true
+  //   }
+  //   return false
+  // }
+}
+
+// ================================================================
+
+// 1. Cтворити get endpoint з PATH /product-create який повертиає container/product-create
+router.get('/product-create', function (req, res) {
+  // const list = Product.getList()
+
+  res.render('product-create', {
+    style: 'product-create',
+    info: '',
+
+    // data: {
+    //   products: {
+    //     list,
+    //     isEmpty: list.length === 0,
+    //   },
+    // },
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ================================================================
+
+// 2. Cтворити POST endpoint з PATH /product-create який отримує в req.body  дані для оновлення product
+
+router.post('/product-create', function (req, res) {
+  const { name, price, description } = req.body
+
+  const product = new Product(name, price, description)
+
+  result = false
+
+  result = Product.add(product)
+
+  res.render('success-alert', {
+    style: 'success-alert',
+    title: 'Створення товару',
+    alert: result
+      ? 'Товар створено успішно!'
+      : 'Не вдалося створити товар',
+  })
+})
+
+// ================================================================
+router.get('/product-list', function (req, res) {
+  const list = Product.getList()
+
+  res.render('product-list', {
+    style: 'product-list',
+
+    data: {
+      products: {
+        list,
+        isEmpty: list.length === 0,
+      },
+    },
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ================================================================
+
+router.get('/product-edit', function (req, res) {
+  const { id } = req.query
+
+  const product = Product.getById(Number(id))
+
+  res.render('product-edit', {
+    style: 'product-edit',
+    name: product.name,
+    price: product.price,
+    description: product.description,
+    ID: id,
+  })
+})
+
+// ================================================================
+
+router.post('/product-edit', function (req, res) {
+  const { name, price, id, description } = req.body
+
+  Product.getById(id)
+
+  const data = {
+    name: name,
+    price: price,
+    description: description,
+  }
+
+  let result = false
+
+  result = Product.updateById(Number(id), data)
+
+  res.render('success-alert', {
+    style: 'success-alert',
+    href: '/product-list',
+    title: 'Редагування товару',
+    alert: result
+      ? 'Дані товару оновлено успішно'
+      : 'Не вдалося оновити дані товару',
+  })
+})
+
+// ================================================================
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
+  let result = false
+
+  result = Product.deleteById(Number(id))
+
+  res.render('success-alert', {
+    style: 'success-alert',
+    title: 'Видалення товару',
+    alert: result
+      ? 'Товар успішно видалено!'
+      : `Не вдалося видалити товар `,
   })
 })
 
