@@ -1,0 +1,5 @@
+@use '../../lib/service.scss' as s;
+.divider {
+  width: 100%;
+  border-bottom: 1px solid s.color('dark_ligth');
+}

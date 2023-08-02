@@ -1,0 +1,32 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../component/heading/style.scss' as heading;
+@use '../../component/purchase-product/style.scss' as purchaseProduct;
+@use '../../component/divider/style.scss' as divider;
+@use '../../component/field/style.scss' as field;
+@use '../../component/form-text/style.scss' as formext;
+@use '../../component/button/style.scss' as button;
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
+  padding: s.space(10);
+}
+.form-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: s.space(5);
+  padding: s.space(5);
+  // border: 1px solid s.color(border);
+  // border-radius: 4px;
+}
+.list__link{
+  text-decoration: none;
+  color: s.color(primary);
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+}

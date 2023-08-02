@@ -1,75 +1,82 @@
-@use '../../lib/service.scss' as s; // підключаємо файл service.scss і він буде тут називатись s
+@use '../../lib/service.scss' as s;
 
-.class__product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: s.space(4);
-    border: 1px solid s.color('light');
-    border-radius: s.radius(2);
-    background-color: s.color('primary');
-    color: white;
-    text-decoration: none;
-    width: 100px;
-    padding: s.space(3);
-    margin-left: s.space(3);
-    margin-top: s.space(5);
+// .header {
+//   display: flex;
+//   padding: s.space(3);
+//   background-color: s.color('dark');
+//   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+//     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+//   margin-bottom: s.space(2);
 
+//   &__button {
+//     @include s.click;
+//     text-decoration: none;
+//     color: s.color('dark');
+//     background-color: s.color('ligth');
+//     padding: s.space(2);
+//     border-radius: 5px;
+//   }
+// }
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
 }
+
 .form {
+  display: flex;
+  flex-direction: column;
+  padding: s.space(4);
+  gap: s.space(8);
+  min-width: 50%;
+  min-width: s.space(100);
 
+  border: 1px solid s.color('ligth');
+  border-radius: 5px;
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: s.space(1);
+    border-bottom: 1px solid s.color('ligth');
+  }
+  &__content {
+    display: grid;
+    justify-content: start;
+    gap: s.space(6);
+  }
+  &__field {
     display: flex;
     flex-direction: column;
-    padding: s.space(4);
-    gap: s.space(8);
-
-    &__title {
-        font-size: 20px;
-        font-weight: bold;
-        padding-bottom: s.space(1);
-        border-bottom: 1px solid s.color('light');
-    }
-
-    &__content {
-        display: grid;
-        gap: s.space(6);
-    }
-
-    &__field {
-        display: flex;
-        flex-direction: column;
-        gap: s.space(2);
-
-    }
-    &__label {
-        font-size: 14px;
-    }
-
-    &__input {
-        border: 1px solid s.color('light');
-        padding: s.space(2)
-    }
-
-    &__button {
-        border: 1px solid s.color('light');
-        padding: s.space(2);
-        border-radius: 20px;
-
-    }
-
-}
-
-.main {
-    background-color: rgb(245, 249, 249);
-    display: flex;
-    flex-direction: column;
-    gap: s.space(10)
+    gap: s.space(2);
+  }
+  &__label {
+    font-size: 14px;
+  }
+  &__input {
+    border: 1px solid s.color('ligth');
+    padding: s.space(2);
+    border-radius: 5px;
+  }
+  &__button {
+    @include s.click;
+    border: 1px solid s.color('ligth');
+    padding: s.space(2);
+    border-radius: 20px;
+    background-color: s.color('ligth');
+  }
 }
 
 .user-list {
-    li {
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
+  li {
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.forms {
+  display: flex;
+  gap: s.space(5);
 }

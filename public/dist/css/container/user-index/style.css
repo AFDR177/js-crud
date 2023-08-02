@@ -1,7 +1,17 @@
-main {
+.class__product {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #124def;
+  color: white;
+  text-decoration: none;
+  width: 100px;
+  padding: 12px;
+  margin-left: 12px;
+  margin-top: 20px;
 }
 
 .form {
@@ -9,20 +19,15 @@ main {
   flex-direction: column;
   padding: 16px;
   gap: 32px;
-  min-width: 50%;
-  min-width: 400px;
-  border: 1px solid;
-  border-radius: 5px;
 }
 .form__title {
   font-size: 20px;
   font-weight: bold;
   padding-bottom: 4px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #ddd;
 }
 .form__content {
   display: grid;
-  justify-content: start;
   gap: 24px;
 }
 .form__field {
@@ -34,33 +39,26 @@ main {
   font-size: 14px;
 }
 .form__input {
-  border: 1px solid;
+  border: 1px solid #ddd;
   padding: 8px;
-  border-radius: 5px;
 }
 .form__button {
-  transition: opacity 0.7s;
-  cursor: pointer;
-  border: 1px solid;
+  border: 1px solid #ddd;
   padding: 8px;
   border-radius: 20px;
 }
-.form__button:hover {
-  opacity: 0.7;
-}
-.form__button:active {
-  opacity: 0.3;
+
+.main {
+  background-color: rgb(245, 249, 249);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .user-list li {
   padding-right: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
-}
-
-.forms {
-  display: flex;
-  gap: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
