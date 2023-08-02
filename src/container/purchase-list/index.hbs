@@ -1,0 +1,25 @@
+<main class='main'>
+  {{#with data}}
+  {{>heading title='Мої замовлення'}}
+
+  <div class="list">
+    {{#each list}}
+    <form method='POST' action='/purchase-list?id={{id}}' class="form-card">
+      {{>form-text label='ID:' text=id }}
+      <button class="list__link">
+        {{>form-text label="Товари" text=product.title }}
+      </button>
+      {{>form-text label="Сума замовлення" text=totalPrice simbol=true}}
+      {{>form-text label="Нараховані бонуси" text=bonus simbol=true}}
+    </form>
+    {{> divider}}
+    {{/each}}
+  </div>
+  <div class="nav">
+    <a href="/" class="list__link"><-Повернутись на головну</a>
+        <a href="/" class="list__link">Замовити-></a>
+  </div>
+  {{/with}}
+</main>
+
+{{!-- {{>button text='Переглянути замовлення'}} --}}

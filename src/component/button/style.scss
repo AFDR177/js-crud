@@ -1,0 +1,12 @@
+@use '../../lib/service.scss' as s;
+.button {
+  @include s.click;
+  width: 100%;
+  color: s.color('hite');
+  border: 1px solid s.color('ligth');
+  padding: s.space(2);
+  border-radius: 6px;
+  background-color: s.color('primary');
+  text-decoration: none;
+  text-align: center;
+}
