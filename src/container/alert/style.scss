@@ -1,0 +1,50 @@
+@use '../../lib/service.scss' as s;
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
+  margin: s.space(4);
+}
+
+.title {
+  color: s.color('primary');
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: s.space(1);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: s.space(4);
+  margin: s.space(8);
+
+  border: 1px solid s.color('ligth');
+  box-shadow: 3px 1px 10px 1px rgba(158, 158, 158, 0.252);
+  border-radius: 5px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(10);
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &__text {
+    font-size: 16px;
+  }
+  &__button {
+    @include s.click;
+    text-decoration: none;
+    color: s.color('ligth');
+    background-color: s.color('primary');
+    padding: s.space(2) s.space(15);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+}
